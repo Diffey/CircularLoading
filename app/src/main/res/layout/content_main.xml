@@ -18,4 +18,5 @@
         android:layout_height="80dp"
         android:layout_centerInParent="true"
         cir:cirColor="@color/colorAccent" />
+
 </RelativeLayout>

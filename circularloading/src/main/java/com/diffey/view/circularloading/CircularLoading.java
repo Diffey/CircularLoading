@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -20,11 +20,9 @@ public class CircularLoading extends View {
     private int minRadius;
     private int circularColor;
 
-    private int circularX;
-    private int circularY;
     private int curRadius;
     private boolean isExpanding = false;
-    private Paint mPaint;
+    private CircularDrawable mDot;
 
     public CircularLoading(Context context) {
         this(context, null);
@@ -44,10 +42,6 @@ public class CircularLoading extends View {
             circularColor = typedArray.getColor(R.styleable.CircularLoading_cirColor, DEF_CIIRCULAR_COLOR);
             typedArray.recycle();
         }
-
-        mPaint = new Paint();
-        mPaint.setColor(circularColor);
-
     }
 
     @Override
@@ -57,17 +51,25 @@ public class CircularLoading extends View {
         int minSide = w > h ? h : w;
         maxRadius = minSide / 2;
 
-        circularX = w / 2;
-        circularY = h / 2;
-
         curRadius = maxRadius;
+        initDot(new Rect(0, 0, w, h));
+    }
+
+
+    private void initDot(Rect rect) {
+        mDot = new CircularDrawable(curRadius, circularColor);
+        mDot.setBounds(rect);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawCircle(circularX, circularY, curRadius, mPaint);
+        mDot.draw(canvas);
+        updateDot();
+        invalidate();
+    }
 
+    private void updateDot() {
         if (isExpanding) {
             curRadius++;
         } else {
@@ -83,6 +85,6 @@ public class CircularLoading extends View {
             curRadius = minRadius;
             isExpanding = true;
         }
-        invalidate();
+        mDot.setRadius(curRadius);
     }
 }
