@@ -27,5 +27,8 @@ dependencies {
 
     compile 'com.jakewharton:butterknife:7.0.1'
 
-    compile project(':circularloading')
+//    compile project(':circularloading')
+    compile 'com.diffey.view.circularloading:circularloading:0.2.0'
+
+
 }
