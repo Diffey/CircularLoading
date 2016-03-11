@@ -1,8 +1,8 @@
 # CircularLoading
 圆形收缩进度条
 
-### 截图
-![](/assets/dotdemo.gif?raw=true)
+### 效果
+![收缩Loading](./assets/dotdemo.gif)
 
 ### 使用
 1.导入依赖
@@ -19,4 +19,4 @@ compile 'com.diffey.view.circularloading:circularloading:0.2.0'
         android:layout_height="80dp"
         android:layout_centerInParent="true"
         cir:cirColor="@color/colorAccent" />
-``` 
+```
