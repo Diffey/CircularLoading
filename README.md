@@ -2,7 +2,7 @@
 圆形收缩进度条
 
 ### 效果
-![收缩Loading](./assets/dotdemo.gif)
+![收缩Loading](./assets/cir.gif)
 
 ### 使用
 1.导入依赖
